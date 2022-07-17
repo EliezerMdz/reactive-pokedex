@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));
+  justify-content: center;
+  background-color: white;
+  padding-top: 3rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
