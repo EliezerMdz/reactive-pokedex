@@ -1,12 +1,15 @@
 {
-  "name": "my-testts-app",
+  "name": "reactive-pokedex",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://eliezermdz.github.io",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve",
-    "build": "webpack --mode development"
+    "build": "webpack --mode development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +33,10 @@
     "webpack-dev-server": "^4.9.0"
   },
   "dependencies": {
+    "-": "^0.0.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "save-dev": "^0.0.1-security"
   }
 }
