@@ -9,10 +9,10 @@
     "dev": "webpack serve",
     "build": "webpack --mode development",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
-  "author": "",
+  "author": "Eliezer Mendez",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.18.2",
