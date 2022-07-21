@@ -1,6 +1,5 @@
 export const pokemons = [
   {
-    url: '',
     abilities: [
       {
         ability: {
