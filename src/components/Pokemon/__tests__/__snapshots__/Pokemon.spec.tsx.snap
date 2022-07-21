@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <div
+      class="banner"
+    />
+    <img
+      alt="Pkmn"
+      class="pkmnImg"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+    />
+    <h1
+      class="name"
+    >
+      Bulbasaur
+    </h1>
+  </div>
+</div>
+`;

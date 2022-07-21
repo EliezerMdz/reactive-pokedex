@@ -40,9 +40,10 @@ const Pokemons = () => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
   const [offset, setOffset] = useState<number>(0);
   const [limit, setLimit] = useState<number>(0);
-  const [loading, isLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+
     console.log(loading);
     const loadMorePokemons = (event: Event) => {
       const window = event.currentTarget as Window;
@@ -51,11 +52,12 @@ const Pokemons = () => {
         setOffset((prevOffset) => {
           return prevOffset + 20;
         })
+        //document.documentElement.scrollTo(0, scrollable - 10);
       }
     }
 
     const getInitialPokemonList = async (limit?: number, offset?: number) => {
-      isLoading(true);
+      setLoading(true);
       const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
       console.log(url)
       const pokemonsList = await fetch(url).then((res) => res.json()).then((data: ApiResponse<PokemonList>) => data.results);
@@ -65,14 +67,19 @@ const Pokemons = () => {
 
     const getFullPokemonInfo = async (limit: number, offset: number) => {
       const halfwayPokemons = await getInitialPokemonList(limit, offset);
+      console.log(halfwayPokemons);
       const promises = halfwayPokemons.map(pmkn => fetch(pmkn.url).then(res => res.json()));
       const pokemonsToDisplay = await Promise.all(promises);
 
       setPokemons((prevPokemons) => [...prevPokemons, ...pokemonsToDisplay]);
-      isLoading(false);
+      setLoading(false);
     }
 
-    getFullPokemonInfo(limit, offset);
+    try {
+      getFullPokemonInfo(limit, offset);
+    } catch (error) {
+      setLoading(false);
+    }
 
     window.addEventListener('scroll', loadMorePokemons);
     return () => {

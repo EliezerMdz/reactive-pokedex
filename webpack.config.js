@@ -29,10 +29,12 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         loader: 'awesome-typescript-loader',
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+        exclude: /node_modules/,
       },
     ],
   },
