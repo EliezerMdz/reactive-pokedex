@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { ApiResponse } from "../../types";
 import { Pokemon } from "../Pokemon";
+import { Loader } from '../Loader'
 
 import './Pokemons.css';
 
@@ -37,11 +38,12 @@ export interface PokemonList {
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
-  const [limit, setLimit] = useState<number>(20);
   const [offset, setOffset] = useState<number>(0);
+  const [limit, setLimit] = useState<number>(0);
+  const [loading, isLoading] = useState<boolean>(false);
 
   useEffect(() => {
-
+    console.log(loading);
     const loadMorePokemons = (event: Event) => {
       const window = event.currentTarget as Window;
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -53,6 +55,7 @@ const Pokemons = () => {
     }
 
     const getInitialPokemonList = async (limit?: number, offset?: number) => {
+      isLoading(true);
       const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
       console.log(url)
       const pokemonsList = await fetch(url).then((res) => res.json()).then((data: ApiResponse<PokemonList>) => data.results);
@@ -66,6 +69,7 @@ const Pokemons = () => {
       const pokemonsToDisplay = await Promise.all(promises);
 
       setPokemons((prevPokemons) => [...prevPokemons, ...pokemonsToDisplay]);
+      isLoading(false);
     }
 
     getFullPokemonInfo(limit, offset);
@@ -75,9 +79,12 @@ const Pokemons = () => {
       window.removeEventListener("scroll", loadMorePokemons);
     };
   }, [offset]);
-  console.log(pokemons);
+
+  console.log(loading);
+
   return (
     <div className="container">
+      <Loader showLoader={loading} />
       {pokemons.map((pokemon) => {
         return <Pokemon key={pokemon.id} pokemon={pokemon} />
       })}

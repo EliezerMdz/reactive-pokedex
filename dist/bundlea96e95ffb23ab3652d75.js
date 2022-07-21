@@ -47,6 +47,47 @@ exports["default"] = App;
 
 /***/ }),
 
+/***/ "./src/components/Loader/Loader.tsx":
+/*!******************************************!*\
+  !*** ./src/components/Loader/Loader.tsx ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+var react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
+__webpack_require__(/*! ./Loader.css */ "./src/components/Loader/Loader.css");
+var Backdrop = function () {
+    return react_1.default.createElement("div", { className: 'backdrop' });
+};
+var Loader = function () {
+    return (react_1.default.createElement(react_1.default.Fragment, null,
+        react_dom_1.default.createPortal(react_1.default.createElement(Backdrop, null), document.getElementById('backdrop-root')),
+        react_1.default.createElement("div", { className: 'loader' })));
+};
+exports["default"] = Loader;
+
+
+/***/ }),
+
+/***/ "./src/components/Loader/index.ts":
+/*!****************************************!*\
+  !*** ./src/components/Loader/index.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+var Loader_1 = __webpack_require__(/*! ./Loader */ "./src/components/Loader/Loader.tsx");
+Object.defineProperty(exports, "Loader", ({ enumerable: true, get: function () { return Loader_1.default; } }));
+
+
+/***/ }),
+
 /***/ "./src/components/Navbar/NavBar.tsx":
 /*!******************************************!*\
   !*** ./src/components/Navbar/NavBar.tsx ***!
@@ -134,7 +175,7 @@ var PokemonCard = function (_a) {
     return (react_1.default.createElement("div", { className: "card" },
         react_1.default.createElement("div", { className: "banner" }),
         react_1.default.createElement("img", { className: "pkmnImg", alt: "Pkmn", src: pokemon.sprites.other["official-artwork"].front_default }),
-        react_1.default.createElement("h1", { className: "name" }, "No. " + pokemon.id + " " + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1))));
+        react_1.default.createElement("h1", { className: "name" }, "" + pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1))));
 };
 exports["default"] = PokemonCard;
 
@@ -227,6 +268,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 var react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
 var Pokemon_1 = __webpack_require__(/*! ../Pokemon */ "./src/components/Pokemon/index.ts");
+var Loader_1 = __webpack_require__(/*! ../Loader */ "./src/components/Loader/index.ts");
 __webpack_require__(/*! ./Pokemons.css */ "./src/components/Pokemons/Pokemons.css");
 var Pokemons = function () {
     var _a = react_1.useState([]), pokemons = _a[0], setPokemons = _a[1];
@@ -279,9 +321,11 @@ var Pokemons = function () {
         };
     }, [offset]);
     console.log(pokemons);
-    return (react_1.default.createElement("div", { className: "container" }, pokemons.map(function (pokemon) {
-        return react_1.default.createElement(Pokemon_1.Pokemon, { key: pokemon.id, pokemon: pokemon });
-    })));
+    return (react_1.default.createElement("div", { className: "container" },
+        react_1.default.createElement(Loader_1.Loader, null),
+        pokemons.map(function (pokemon) {
+            return react_1.default.createElement(Pokemon_1.Pokemon, { key: pokemon.id, pokemon: pokemon });
+        })));
 };
 exports["default"] = Pokemons;
 
@@ -349,6 +393,32 @@ ___CSS_LOADER_EXPORT___.push([module.id, "\n", "",{"version":3,"sources":[],"nam
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/Loader/Loader.css":
+/*!********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/Loader/Loader.css ***!
+  \********************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".cover-spin {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: rgba(255, 255, 255, 0.7);\n  z-index: 9999;\n  display: none;\n}\n\n@-webkit-keyframes spin {\n  from {\n    -webkit-transform: rotate(0deg);\n  }\n  to {\n    -webkit-transform: rotate(360deg);\n  }\n}\n\n@keyframes spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n.cover-spin::after {\n  content: '';\n  display: block;\n  position: absolute;\n  left: 48%;\n  top: 40%;\n  width: 40px;\n  height: 40px;\n  border-style: solid;\n  border-color: black;\n  border-top-color: transparent;\n  border-width: 4px;\n  border-radius: 50%;\n  -webkit-animation: spin 0.8s linear infinite;\n  animation: spin 0.8s linear infinite;\n}\n\n.backdrop {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  z-index: 10;\n  background: rgba(0, 0, 0, 0.75);\n}\n\n.loader {\n  position: fixed;\n  top: 30vh;\n  left: 10%;\n  width: 80%;\n  z-index: 100;\n  overflow: hidden;\n}\n\n@media (min-width: 768px) {\n  .loader {\n    left: calc(50% - 20rem);\n    width: 40rem;\n  }\n}\n", "",{"version":3,"sources":["webpack://./src/components/Loader/Loader.css"],"names":[],"mappings":"AAAA;EACE,eAAe;EACf,WAAW;EACX,OAAO;EACP,QAAQ;EACR,MAAM;EACN,SAAS;EACT,0CAA0C;EAC1C,aAAa;EACb,aAAa;AACf;;AAEA;EACE;IACE,+BAA+B;EACjC;EACA;IACE,iCAAiC;EACnC;AACF;;AAEA;EACE;IACE,uBAAuB;EACzB;EACA;IACE,yBAAyB;EAC3B;AACF;;AAEA;EACE,WAAW;EACX,cAAc;EACd,kBAAkB;EAClB,SAAS;EACT,QAAQ;EACR,WAAW;EACX,YAAY;EACZ,mBAAmB;EACnB,mBAAmB;EACnB,6BAA6B;EAC7B,iBAAiB;EACjB,kBAAkB;EAClB,4CAA4C;EAC5C,oCAAoC;AACtC;;AAEA;EACE,eAAe;EACf,MAAM;EACN,OAAO;EACP,WAAW;EACX,aAAa;EACb,WAAW;EACX,+BAA+B;AACjC;;AAEA;EACE,eAAe;EACf,SAAS;EACT,SAAS;EACT,UAAU;EACV,YAAY;EACZ,gBAAgB;AAClB;;AAEA;EACE;IACE,uBAAuB;IACvB,YAAY;EACd;AACF","sourcesContent":[".cover-spin {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  background-color: rgba(255, 255, 255, 0.7);\n  z-index: 9999;\n  display: none;\n}\n\n@-webkit-keyframes spin {\n  from {\n    -webkit-transform: rotate(0deg);\n  }\n  to {\n    -webkit-transform: rotate(360deg);\n  }\n}\n\n@keyframes spin {\n  from {\n    transform: rotate(0deg);\n  }\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n.cover-spin::after {\n  content: '';\n  display: block;\n  position: absolute;\n  left: 48%;\n  top: 40%;\n  width: 40px;\n  height: 40px;\n  border-style: solid;\n  border-color: black;\n  border-top-color: transparent;\n  border-width: 4px;\n  border-radius: 50%;\n  -webkit-animation: spin 0.8s linear infinite;\n  animation: spin 0.8s linear infinite;\n}\n\n.backdrop {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100vh;\n  z-index: 10;\n  background: rgba(0, 0, 0, 0.75);\n}\n\n.loader {\n  position: fixed;\n  top: 30vh;\n  left: 10%;\n  width: 80%;\n  z-index: 100;\n  overflow: hidden;\n}\n\n@media (min-width: 768px) {\n  .loader {\n    left: calc(50% - 20rem);\n    width: 40rem;\n  }\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/components/Navbar/NavBar.css":
 /*!********************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/components/Navbar/NavBar.css ***!
@@ -389,12 +459,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ../../../../../assets/ballbanner.png */ "./assets/ballbanner.png"), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --clr-primary: #651fff;\n  --clr-gray: #37474f;\n  --clr-gray-light: #b0bec5;\n}\n\n* {\n  box-sizing: border-box;\n  font-family: 'Open Sans', sans-serif;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  color: var(--clr-gray);\n}\n.card {\n  box-shadow: 0px 2px 8px 0px black;\n  text-align: center;\n  border: solid;\n  border-color: black;\n  border-radius: 1rem;\n  position: relative;\n  margin: 1rem;\n  overflow: hidden;\n  background-color: white;\n}\n\n.banner {\n  position: absolute;\n  background-image: url(https://static.zerochan.net/Haruka.%28Pok%C3%A9mon%29.full.1279361.jpg);\n  height: 10rem;\n  width: 100%;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n\n.pkmnImg {\n  width: 15rem;\n  clip-path: circle(250px at center);\n}\n\n.name {\n  font-size: 1.5rem;\n  margin: 1rem 2rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/Pokemon/Pokemon.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;AAC3B;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,sBAAsB;AACxB;AACA;EACE,iCAAiC;EACjC,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,mBAAmB;EACnB,kBAAkB;EAClB,YAAY;EACZ,gBAAgB;EAChB,uBAAuB;AACzB;;AAEA;EACE,kBAAkB;EAClB,6FAA6F;EAC7F,aAAa;EACb,WAAW;EACX,2BAA2B;EAC3B,4BAA4B;EAC5B,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,kCAAkC;AACpC;;AAEA;EACE,iBAAiB;EACjB,iBAAiB;AACnB","sourcesContent":[":root {\n  --clr-primary: #651fff;\n  --clr-gray: #37474f;\n  --clr-gray-light: #b0bec5;\n}\n\n* {\n  box-sizing: border-box;\n  font-family: 'Open Sans', sans-serif;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  color: var(--clr-gray);\n}\n.card {\n  box-shadow: 0px 2px 8px 0px black;\n  text-align: center;\n  border: solid;\n  border-color: black;\n  border-radius: 1rem;\n  position: relative;\n  margin: 1rem;\n  overflow: hidden;\n  background-color: white;\n}\n\n.banner {\n  position: absolute;\n  background-image: url(https://static.zerochan.net/Haruka.%28Pok%C3%A9mon%29.full.1279361.jpg);\n  height: 10rem;\n  width: 100%;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n\n.pkmnImg {\n  width: 15rem;\n  clip-path: circle(250px at center);\n}\n\n.name {\n  font-size: 1.5rem;\n  margin: 1rem 2rem;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --clr-primary: #651fff;\n  --clr-gray: #37474f;\n  --clr-gray-light: #b0bec5;\n}\n\n* {\n  box-sizing: border-box;\n  font-family: 'Open Sans', sans-serif;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  color: var(--clr-gray);\n}\n.card {\n  box-shadow: 0px 2px 8px 0px black;\n  text-align: center;\n  border-color: black;\n  border-radius: 1rem;\n  position: relative;\n  margin: 1rem;\n  overflow: hidden;\n  background-color: white;\n}\n\n.banner {\n  position: absolute;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  height: 10rem;\n  width: 100%;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n\n.pkmnImg {\n  width: 15rem;\n  clip-path: circle(250px at center);\n}\n\n.name {\n  font-size: 1.5rem;\n  margin: 1rem 2rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/Pokemon/Pokemon.css"],"names":[],"mappings":"AAAA;EACE,sBAAsB;EACtB,mBAAmB;EACnB,yBAAyB;AAC3B;;AAEA;EACE,sBAAsB;EACtB,oCAAoC;EACpC,SAAS;EACT,UAAU;AACZ;;AAEA;EACE,sBAAsB;AACxB;AACA;EACE,iCAAiC;EACjC,kBAAkB;EAClB,mBAAmB;EACnB,mBAAmB;EACnB,kBAAkB;EAClB,YAAY;EACZ,gBAAgB;EAChB,uBAAuB;AACzB;;AAEA;EACE,kBAAkB;EAClB,yDAA6C;EAC7C,aAAa;EACb,WAAW;EACX,2BAA2B;EAC3B,4BAA4B;EAC5B,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,kCAAkC;AACpC;;AAEA;EACE,iBAAiB;EACjB,iBAAiB;AACnB","sourcesContent":[":root {\n  --clr-primary: #651fff;\n  --clr-gray: #37474f;\n  --clr-gray-light: #b0bec5;\n}\n\n* {\n  box-sizing: border-box;\n  font-family: 'Open Sans', sans-serif;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  color: var(--clr-gray);\n}\n.card {\n  box-shadow: 0px 2px 8px 0px black;\n  text-align: center;\n  border-color: black;\n  border-radius: 1rem;\n  position: relative;\n  margin: 1rem;\n  overflow: hidden;\n  background-color: white;\n}\n\n.banner {\n  position: absolute;\n  background-image: url(/assets/ballbanner.png);\n  height: 10rem;\n  width: 100%;\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: cover;\n}\n\n.pkmnImg {\n  width: 15rem;\n  clip-path: circle(250px at center);\n}\n\n.name {\n  font-size: 1.5rem;\n  margin: 1rem 2rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -420,7 +495,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));\n  justify-content: center;\n  background-color: white;\n  padding-top: 3rem;\n  padding-left: 5rem;\n  padding-right: 5rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/Pokemons/Pokemons.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6DAA6D;EAC7D,uBAAuB;EACvB,uBAAuB;EACvB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB","sourcesContent":[".container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));\n  justify-content: center;\n  background-color: white;\n  padding-top: 3rem;\n  padding-left: 5rem;\n  padding-right: 5rem;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));\n  justify-content: center;\n  background-color: white;\n  padding-top: 3rem;\n  padding-left: 3rem;\n  padding-right: 3rem;\n}\n", "",{"version":3,"sources":["webpack://./src/components/Pokemons/Pokemons.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,6DAA6D;EAC7D,uBAAuB;EACvB,uBAAuB;EACvB,iBAAiB;EACjB,kBAAkB;EAClB,mBAAmB;AACrB","sourcesContent":[".container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(10rem, 20rem));\n  justify-content: center;\n  background-color: white;\n  padding-top: 3rem;\n  padding-left: 3rem;\n  padding-right: 3rem;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -560,6 +635,44 @@ module.exports = function (cssWithMappingToString) {
   };
 
   return list;
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+
+  if (!url) {
+    return url;
+  }
+
+  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
+
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+
+  return url;
 };
 
 /***/ }),
@@ -33921,6 +34034,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./src/components/Loader/Loader.css":
+/*!******************************************!*\
+  !*** ./src/components/Loader/Loader.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Loader_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./Loader.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/Loader/Loader.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Loader_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Loader_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Loader_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Loader_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./src/components/Navbar/NavBar.css":
 /*!******************************************!*\
   !*** ./src/components/Navbar/NavBar.css ***!
@@ -34441,6 +34608,16 @@ function styleTagTransform(css, styleElement) {
 
 module.exports = styleTagTransform;
 
+/***/ }),
+
+/***/ "./assets/ballbanner.png":
+/*!*******************************!*\
+  !*** ./assets/ballbanner.png ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "4d7b725c7c224355bade.png";
+
 /***/ })
 
 /******/ 	});
@@ -34472,6 +34649,9 @@ module.exports = styleTagTransform;
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -34495,6 +34675,18 @@ module.exports = styleTagTransform;
 /******/ 				}
 /******/ 			}
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -34522,6 +34714,52 @@ module.exports = styleTagTransform;
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/nonce */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nc = undefined;
@@ -34536,4 +34774,4 @@ module.exports = styleTagTransform;
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=bundle4cfbad3a6422964be1ab.js.map
+//# sourceMappingURL=bundlea96e95ffb23ab3652d75.js.map
