@@ -43,8 +43,6 @@ const Pokemons = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-
-    console.log(loading);
     const loadMorePokemons = (event: Event) => {
       const window = event.currentTarget as Window;
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
@@ -59,7 +57,6 @@ const Pokemons = () => {
     const getInitialPokemonList = async (limit?: number, offset?: number) => {
       setLoading(true);
       const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
-      console.log(url)
       const pokemonsList = await fetch(url).then((res) => res.json()).then((data: ApiResponse<PokemonList>) => data.results);
 
       return pokemonsList;
@@ -67,7 +64,6 @@ const Pokemons = () => {
 
     const getFullPokemonInfo = async (limit: number, offset: number) => {
       const halfwayPokemons = await getInitialPokemonList(limit, offset);
-      console.log(halfwayPokemons);
       const promises = halfwayPokemons.map(pmkn => fetch(pmkn.url).then(res => res.json()));
       const pokemonsToDisplay = await Promise.all(promises);
 
@@ -86,8 +82,6 @@ const Pokemons = () => {
       window.removeEventListener("scroll", loadMorePokemons);
     };
   }, [offset]);
-
-  console.log(loading);
 
   return (
     <div className="container">

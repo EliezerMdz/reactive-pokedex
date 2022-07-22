@@ -3,12 +3,12 @@ import React, { useRef, useState } from 'react';
 import './NavBar.css';
 
 const NavBar: React.FC = () => {
-    const navbarLinks = useRef<HTMLDivElement>(null);
+    const navbarLinks = useRef<HTMLDivElement>(null)!;
 
     const toggleActiveClassName = () => {
-        navbarLinks.current.classList.toggle('active');
+        navbarLinks?.current?.classList.toggle('active');
     }
-    console.log(navbarLinks);
+
     return (
         <nav className='navbar'>
             <div className='title'>Pokedex</div>
