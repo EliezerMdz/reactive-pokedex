@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #37474f;
+}
+.card {
+  box-shadow: 0px 2px 8px 0px black;
+  text-align: center;
+  border-color: black;
+  border-radius: 1rem;
+  position: relative;
+  margin: 1rem;
+  background-color: white;
+}
+
+.textbox-title {
+  font-size: 1.5rem;
+  margin: 1rem 2rem;
+  color: black;
+}
+
+.body-text {
+  margin: 1rem 2rem;
+  font-size: 0.9rem;
+}
