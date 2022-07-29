@@ -47,7 +47,7 @@ const Pokemons = () => {
       const window = event.currentTarget as Window;
       const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       if (Math.ceil(window.scrollY) === scrollable) {
-        setOffset((prevOffset) => {
+        setOffset((prevOffset: number) => {
           return prevOffset + 20;
         })
         //document.documentElement.scrollTo(0, scrollable - 10);
