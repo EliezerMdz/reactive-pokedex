@@ -1,11 +1,12 @@
 import React from 'react';
 
-import './Loader.css';
+// @ts-ignore
+import styles from './Loader.css';
 
 const Loader: React.FC<{ showLoader: boolean }> = ({ showLoader }) => {
     return (
         <>
-            {showLoader && <div className={'cover-spin'}></div>}
+            {showLoader && <div className={styles.coverSpin} />}
         </>
     );
 };

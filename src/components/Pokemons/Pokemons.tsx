@@ -1,9 +1,10 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { ApiResponse } from "../../types";
 import { Pokemon } from "../Pokemon";
 import { Loader } from '../Loader'
 
-import './Pokemons.css';
+// @ts-ignore
+import styles from './Pokemons.css';
 
 export interface ISprites {
   back_default: string;
@@ -84,7 +85,7 @@ const Pokemons = () => {
   }, [offset]);
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Loader showLoader={loading} />
       {pokemons.map((pokemon) => {
         return <Pokemon key={pokemon.id} pokemon={pokemon} />
