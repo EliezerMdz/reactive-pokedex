@@ -1,8 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import './App.css';
-
 import Pokemons from './components/Pokemons';
 import NavBar from './components/Navbar';
 import Home from './components/Home/Home';

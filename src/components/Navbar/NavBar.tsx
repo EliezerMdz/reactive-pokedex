@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import './NavBar.css';
+// @ts-ignore
+import styles from './NavBar.css';
 
 const NavBar: React.FC = () => {
     const navbarLinks = useRef<HTMLDivElement>(null)!;
@@ -11,16 +12,16 @@ const NavBar: React.FC = () => {
     }
 
     return (
-        <nav className='navbar'>
+        <nav className={styles.navbar}>
             <div>
-                <Link to='home' className='title'>Pokedex</Link>
+                <Link to='home' className={styles.title}>Pokedex</Link>
             </div>
-            <a href='#' className='toggle-button' onClick={toggleActiveClassName}>
-                <span className='bar'></span>
-                <span className='bar'></span>
-                <span className='bar'></span>
+            <a href='#' className={styles.toggleButton} onClick={toggleActiveClassName}>
+                <span className={styles.bar} />
+                <span className={styles.bar} />
+                <span className={styles.bar} />
             </a>
-            <div className='navbar-links' ref={navbarLinks}>
+            <div className={styles.navbarLinks} ref={navbarLinks}>
                 <ul>
                     <li><NavLink to='home'>Home</NavLink></li>
                     <li><NavLink to='pokemons'>Pokemons</NavLink></li>
