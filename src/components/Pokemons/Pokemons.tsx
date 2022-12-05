@@ -1,41 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ApiResponse } from "../../types";
 import { Pokemon } from "../Pokemon";
-import { Loader } from '../Loader'
+import { Loader } from '../Loader';
+import {IPokemon, PokemonList} from "../../models";
 
 // @ts-ignore
 import styles from './Pokemons.css';
-
-export interface ISprites {
-  back_default: string;
-  back_female?: any;
-  back_shiny: string;
-  back_shiny_female?: any;
-  front_default: string;
-  front_female?: any;
-  front_shiny: string;
-  front_shiny_female?: any;
-  other: IOther;
-}
-
-export interface IOfficialArtwork {
-  front_default: string;
-}
-
-export interface IOther {
-  "official-artwork": IOfficialArtwork;
-}
-
-export interface IPokemon {
-  id: number;
-  name: string;
-  sprites: ISprites;
-}
-
-export interface PokemonList {
-  name: string;
-  url: string;
-}
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
@@ -58,9 +28,7 @@ const Pokemons = () => {
     const getInitialPokemonList = async (limit?: number, offset?: number) => {
       setLoading(true);
       const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
-      const pokemonsList = await fetch(url).then((res) => res.json()).then((data: ApiResponse<PokemonList>) => data.results);
-
-      return pokemonsList;
+      return await fetch(url).then((res) => res.json()).then((data: ApiResponse<PokemonList>) => data.results);
     }
 
     const getFullPokemonInfo = async (limit: number, offset: number) => {

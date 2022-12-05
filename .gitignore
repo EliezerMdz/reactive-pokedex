@@ -3,6 +3,7 @@
 
 # Bundles
 /dist
+/.idea
 
 # misc
 .DS_Store

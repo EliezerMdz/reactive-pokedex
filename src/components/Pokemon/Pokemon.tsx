@@ -1,5 +1,5 @@
 import React from "react";
-import type { IPokemon } from "../Pokemons";
+import {IPokemon} from "../../models";
 
 // @ts-ignore
 import styles from './Pokemon.css';
