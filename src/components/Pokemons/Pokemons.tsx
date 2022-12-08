@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ApiResponse } from "../../types";
 import { Pokemon } from "../Pokemon";
-import { Loader } from '../Loader';
-import {IPokemon, PokemonList} from "../../models";
+import { Loader } from "../Loader";
+import { IPokemon, PokemonList } from "../../models";
 
 // @ts-ignore
-import styles from './Pokemons.css';
+import styles from "./Pokemons.css";
+import { useQueryPokemons } from "../../services";
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
@@ -13,32 +14,39 @@ const Pokemons = () => {
   const [limit, setLimit] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
 
+  //const { data } = useQueryPokemons({ limit: 0, offset: 0 });
+
   useEffect(() => {
     const loadMorePokemons = (event: Event) => {
       const window = event.currentTarget as Window;
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
       if (Math.ceil(window.scrollY) === scrollable) {
         setOffset((prevOffset: number) => {
           return prevOffset + 20;
-        })
+        });
         //document.documentElement.scrollTo(0, scrollable - 10);
       }
-    }
+    };
 
     const getInitialPokemonList = async (limit?: number, offset?: number) => {
       setLoading(true);
-      const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
-      return await fetch(url).then((res) => res.json()).then((data: ApiResponse<PokemonList>) => data.results);
-    }
+      const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+      return await fetch(url)
+        .then((res) => res.json())
+        .then((data: ApiResponse<PokemonList>) => data.results);
+    };
 
     const getFullPokemonInfo = async (limit: number, offset: number) => {
       const halfwayPokemons = await getInitialPokemonList(limit, offset);
-      const promises = halfwayPokemons.map(pmkn => fetch(pmkn.url).then(res => res.json()));
+      const promises = halfwayPokemons.map((pmkn) =>
+        fetch(pmkn.url).then((res) => res.json())
+      );
       const pokemonsToDisplay = await Promise.all(promises);
 
       setPokemons((prevPokemons) => [...prevPokemons, ...pokemonsToDisplay]);
       setLoading(false);
-    }
+    };
 
     try {
       getFullPokemonInfo(limit, offset);
@@ -46,7 +54,7 @@ const Pokemons = () => {
       setLoading(false);
     }
 
-    window.addEventListener('scroll', loadMorePokemons);
+    window.addEventListener("scroll", loadMorePokemons);
     return () => {
       window.removeEventListener("scroll", loadMorePokemons);
     };
@@ -56,7 +64,7 @@ const Pokemons = () => {
     <div className={styles.container}>
       <Loader showLoader={loading} />
       {pokemons.map((pokemon) => {
-        return <Pokemon key={pokemon.id} pokemon={pokemon} />
+        return <Pokemon key={pokemon.id} pokemon={pokemon} />;
       })}
     </div>
   );

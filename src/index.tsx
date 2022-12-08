@@ -1,13 +1,18 @@
-import React from 'react';
-import ReactDom from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDom from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-import App from './app';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-const root = ReactDom.createRoot(document.getElementById('root')!);
+import App from "./app";
+
+const queryClient = new QueryClient();
+const root = ReactDom.createRoot(document.getElementById("root")!);
 
 root.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+  <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </BrowserRouter>
 );
