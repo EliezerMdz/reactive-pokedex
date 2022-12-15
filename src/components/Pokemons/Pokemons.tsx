@@ -6,7 +6,6 @@ import { IPokemon, PokemonList } from "../../models";
 
 // @ts-ignore
 import styles from "./Pokemons.css";
-import { useQueryPokemons } from "../../services";
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
@@ -14,18 +13,15 @@ const Pokemons = () => {
   const [limit, setLimit] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
 
-  //const { data } = useQueryPokemons({ limit: 0, offset: 0 });
-
   useEffect(() => {
     const loadMorePokemons = (event: Event) => {
       const window = event.currentTarget as Window;
       const scrollable =
         document.documentElement.scrollHeight - window.innerHeight;
-      if (Math.ceil(window.scrollY) === scrollable) {
+      if (Math.floor(window.scrollY) === scrollable) {
         setOffset((prevOffset: number) => {
           return prevOffset + 20;
         });
-        //document.documentElement.scrollTo(0, scrollable - 10);
       }
     };
 
@@ -48,11 +44,10 @@ const Pokemons = () => {
       setLoading(false);
     };
 
-    try {
-      getFullPokemonInfo(limit, offset);
-    } catch (error) {
+    getFullPokemonInfo(limit, offset).catch((reason) => {
+      console.error(`Error fetching pokemons: ${reason}`);
       setLoading(false);
-    }
+    });
 
     window.addEventListener("scroll", loadMorePokemons);
     return () => {

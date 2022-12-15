@@ -6,6 +6,7 @@ import {
 import { QUERY_KEY } from "./query-key";
 import { PokemonList } from "../models";
 import api, { getApiUrl } from "../../utils/api";
+import { ApiResponse } from "../types";
 
 interface Filters {
   limit?: number;
@@ -19,18 +20,16 @@ const getPokemons = async ({ limit, offset }: Filters) => {
   };
 
   const url = getApiUrl({ path: "/pokemon", searchParams: formattedFilters });
-  const response = api.get(url);
-  //console.log(response);
-  return response;
+  return api.get(url);
 };
 
 export const useQueryPokemons = (
   filters: Filters,
   options?: Omit<
-    UseQueryOptions<any, unknown, PokemonList, QUERY_KEY[]>,
+    UseQueryOptions<any, unknown, ApiResponse<PokemonList>, QUERY_KEY[]>,
     "queryKey" | "queryFn"
   >
-): UseQueryResult<PokemonList> => {
+): UseQueryResult<ApiResponse<PokemonList>> => {
   return useQuery([QUERY_KEY.POKEMONS], () => getPokemons(filters), {
     ...options,
     keepPreviousData: true,

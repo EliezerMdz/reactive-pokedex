@@ -28,7 +28,6 @@ export const getApiUrl: (opts: {
 };
 
 const baseResourceFetch = async (url: URL, options?: RequestInit) => {
-  console.log(url, options);
   const response = await fetch(url.toString(), { ...options });
   await handleApiError(response);
   return response;
