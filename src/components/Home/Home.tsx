@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageSlider from '../ImageSlider';
+import ImageSlider from './slider';
 import TextBox from '../TextBox';
 
 const Home: React.FC = () => {
@@ -11,8 +11,7 @@ const Home: React.FC = () => {
                 <ImageSlider />
             </div>
             <div>
-                <TextBox title={title} text={text} />
-                <TextBox title={title} text={text} />
+                
             </div>
         </>
     );

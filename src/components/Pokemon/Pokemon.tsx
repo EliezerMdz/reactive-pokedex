@@ -4,7 +4,10 @@ import { IPokemon } from "../../models";
 // @ts-ignore
 import styles from "./Pokemon.css";
 
-const PokemonCard: React.FC<{ pokemon: IPokemon }> = ({ pokemon }) => {
+interface Props {
+  pokemon: IPokemon;
+}
+const PokemonCard: React.FC<Props> = ({ pokemon }) => {
   return (
     <div className={styles.card}>
       <div className={styles.banner}></div>
