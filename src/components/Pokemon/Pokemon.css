@@ -1,47 +1,47 @@
 :root {
-    --clr-primary: #651fff;
-    --clr-gray: #37474f;
-    --clr-gray-light: #b0bec5;
+  --clr-primary: #651fff;
+  --clr-gray: #37474f;
+  --clr-gray-light: #b0bec5;
 }
 
 * {
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    color: var(--clr-gray);
+  color: var(--clr-gray);
 }
 
 .card {
-    box-shadow: 0px 2px 8px 0px black;
-    text-align: center;
-    border-color: black;
-    border-radius: 1rem;
-    position: relative;
-    margin: 1rem;
-    overflow: hidden;
-    background-color: white;
+  box-shadow: 0px 2px 8px 0px black;
+  text-align: center;
+  border-color: black;
+  border-radius: 1rem;
+  position: relative;
+  margin: 1rem;
+  overflow: hidden;
+  background-color: white;
 }
 
 .banner {
-    position: absolute;
-    background-image: url(/assets/ballbanner.png);
-    height: 10rem;
-    width: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  position: absolute;
+  background-image: url(/assets/ballbanner.png);
+  height: 10rem;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .pkmnImg {
-    width: 15rem;
-    clip-path: circle(250px at center);
+  width: 15rem;
+  clip-path: circle(250px at center);
 }
 
 .name {
-    font-size: 1.5rem;
-    margin: 1rem 2rem;
+  font-size: 1.5rem;
+  margin: 1rem 2rem;
 }

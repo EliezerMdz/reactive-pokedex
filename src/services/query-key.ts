@@ -1,3 +1,3 @@
 export enum QUERY_KEY {
-    POKEMONS = 'pokemons',
+  POKEMONS = "pokemons",
 }

@@ -1,13 +1,9 @@
 import React from "react";
 
-interface Props {
-    
-}
+interface Props {}
 
 const News: React.FC<Props> = () => {
-    return(
-        <></>
-    )
-}
+  return <></>;
+};
 
 export default News;

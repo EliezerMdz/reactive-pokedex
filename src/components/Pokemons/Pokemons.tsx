@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ApiResponse } from "../../types";
 import { Pokemon } from "../pokemon";
-import { Loader } from "../loader";
+import { Loader } from "../common/loader";
 import { IPokemon, PokemonList } from "../../models";
 
 // @ts-ignore
