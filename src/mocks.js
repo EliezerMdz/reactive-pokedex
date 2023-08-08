@@ -1,4 +1,4 @@
-export const pokemons = [
+export const pokemonsMock = [
   {
     abilities: [
       {

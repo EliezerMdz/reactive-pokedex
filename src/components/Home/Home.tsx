@@ -1,6 +1,5 @@
 import React from "react";
 import ImageSlider from "./slider";
-import TextBox from "../TextBox";
 
 const Home: React.FC = () => {
   const title = "Textbox Title";

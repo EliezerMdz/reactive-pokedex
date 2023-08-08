@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Pokemons from "./components/Pokemons";
-import NavBar from "./components/Navbar";
-import Home from "./components/Home/Home";
+import NavBar from "./components/navbar";
+import Home from "./components/home";
 
 function App() {
   return (
